@@ -8,9 +8,10 @@ interface HeroProps {
   ctaText?: string
   ctaHref?: string
   className?: string
+  children?: React.ReactNode
 }
 
-export function Hero({ title, subtitle, ctaText, ctaHref, className = '' }: HeroProps) {
+export function Hero({ title, subtitle, ctaText, ctaHref, className = '', children }: HeroProps) {
   return (
     <motion.div
       initial="hidden"
@@ -27,11 +28,13 @@ export function Hero({ title, subtitle, ctaText, ctaHref, className = '' }: Hero
           {subtitle}
         </p>
       )}
-      {ctaText && ctaHref && (
+      {children ? (
+        children
+      ) : ctaText && ctaHref ? (
         <Link to={ctaHref} className="btn-primary mt-8 text-lg">
           {ctaText}
         </Link>
-      )}
+      ) : null}
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-surface to-transparent" />
     </motion.div>
   )

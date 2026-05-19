@@ -1,0 +1,7 @@
+export const SKOOL_URL = 'https://www.skool.com/powerhouse-fitness'
+export const YOUTUBE_URL = 'https://www.youtube.com/@joshholyfield'
+export const INSTAGRAM_URL = 'https://www.instagram.com/joshholyfield/'
+export const SITE_NAME = 'Powerhouse Fitness'
+export const SEO_TITLE_SUFFIX = '| Powerhouse Fitness'
+export const IRONFORGE_URL = 'https://theironforge.us'
+export const ANVIL_URL = 'https://anvilnutrition.us'

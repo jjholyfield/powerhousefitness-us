@@ -9,6 +9,8 @@ interface CTABlockProps {
   primaryHref: string
   secondaryText?: string
   secondaryHref?: string
+  externalPrimary?: boolean
+  externalSecondary?: boolean
   className?: string
 }
 
@@ -19,6 +21,8 @@ export function CTABlock({
   primaryHref,
   secondaryText,
   secondaryHref,
+  externalPrimary = false,
+  externalSecondary = false,
   className = '',
 }: CTABlockProps) {
   return (
@@ -38,16 +42,33 @@ export function CTABlock({
         </p>
       )}
       <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <Link to={primaryHref} className="btn-primary">
-          {primaryText}
-        </Link>
-        {secondaryText && secondaryHref && (
-          <Link
-            to={secondaryHref}
-            className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-border text-text-secondary hover:text-text-primary transition-colors"
-          >
-            {secondaryText}
+        {externalPrimary ? (
+          <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="btn-primary">
+            {primaryText}
+          </a>
+        ) : (
+          <Link to={primaryHref} className="btn-primary">
+            {primaryText}
           </Link>
+        )}
+        {secondaryText && secondaryHref && (
+          externalSecondary ? (
+            <a
+              href={secondaryHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-border text-text-secondary hover:text-text-primary transition-colors"
+            >
+              {secondaryText}
+            </a>
+          ) : (
+            <Link
+              to={secondaryHref}
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-border text-text-secondary hover:text-text-primary transition-colors"
+            >
+              {secondaryText}
+            </Link>
+          )
         )}
       </div>
     </motion.div>
